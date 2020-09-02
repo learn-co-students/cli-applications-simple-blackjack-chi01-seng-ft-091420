@@ -28,31 +28,45 @@ def initial_round
   sum
 end
 
-def hit?(card_total)
-  prompt_user
-  input = get_user_input
-  if input == "s"
-    card_total
-  elsif input == "h"
-    deal_card + card_total
-  elsif input != "h" || "s"
-    invalid_command
-    prompt_user
-    get_user_input
-  end
-end
 
 def invalid_command
   puts "Please enter a valid command"
 end
 
+def hit?(card_total)
+  prompt_user
+  valid_inputs= ["h", "s"]
+  input = get_user_input
+  
+#   until valid_inputs.include?(user_input)
+#     invalid_command
+#     prompt_user
+#     user_input = get_user_input
+#   end
+  
+#   if user_input == "h"
+#     card_total += deal_card
+#   end
+#   card_total
+# end
+  
+  if input == "s"
+    card_total
+  elsif input == "h"
+    card_total += deal_card
+  else
+    invalid_command
+    hit?(card_total)
+  end
+end
+
 def runner
   welcome
-  num = initial_round
-  hit_num = hit?(num)
-  display_card_total(hit_num)
-  if hit_num > 21
-   end_game(hit_num)
+  card_total = initial_round
+  until card_total > 21
+    card_total = hit?(card_total)
+    display_card_total(card_total)
   end
+end_game(card_total)
 end
     
