@@ -1,9 +1,11 @@
 def welcome
   # code #welcome here
+  puts "Welcome to the Blackjack Table"
 end
 
 def deal_card
   # code #deal_card here
+  
 end
 
 def display_card_total
@@ -16,6 +18,7 @@ end
 
 def get_user_input
   # code #get_user_input here
+  p "h"
 end
 
 def end_game
@@ -24,6 +27,7 @@ end
 
 def initial_round
   # code #initial_round here
+  p 12
 end
 
 def hit?
